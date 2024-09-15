@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panda Website</title>
+    <div style="display: flex; justify-content: space-between;">
+      <img src="static/pandalogo.png" alt="Company Logo" width="200" height="100">
+      <h1>Welcome to Panda Company</h1>
+      <img src="static/pandalogo2.png" alt="Company Logo" width="200" height="100">
+    </div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        /* Add your custom CSS styles here */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .tabcontent.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Models')">Models</button>
+        <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+        <button class="tablinks" onclick="location.href='/iot'" >IOT</button>
+        <button class="tablinks" onclick="openTab(event, 'iot-new')" >iot-new</button>
+
+        <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+        <button class="tablinks"  onclick="openTab(event, 'Environment')")>Environment</button>
+        <button class="tablinks"  onclick="openTab(event, 'Employees')")>Employees</button>
+        <button class="tablinks"  onclick="openTab(event, 'Panda-Fleet')")>Panda Fleet</button>
+        <button class="tablinks"  onclick="openTab(event, 'panda_models')")>panda_models</button>
+        <button class="tablinks"  onclick="openTab(event, 'Fleet_Alerts')")>Fleet_Alerts</button>
+        <!-- onclick="location.href='/env'" -->
+      </div>
+
+      <div id="iot-new" class="tabcontent">
+          <h1>IOT Vechile Locations</h1>
+          <iframe src="/iot" width="100%" height="800" frameborder="0"></iframe>
+
+      </div>
+
+      <!-- <div id="iot-new" class="tabcontent">
+      <h1>IOT Vechile Locations</h1>
+
+      <p>View Panda Fleets locations <a href="/iot">here</a></p>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+        $(document).ready(function() {
+            $('#iot-new').load('/iot');  
+
+          });
+      </script> -->
+
+
+
+      <div id="Fleet_Alerts" class="tabcontent" >
+      <h2>Panda Fleet Alerts</h2>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+        $(document).ready(function() {
+            $('#Fleet_Alerts').load('/alerts');  
+
+          });
+      </script>
+      </div>
+
+    </div>
+    <div id="panda_models" class="tabcontent" >
+    <h2>Database Environment Details</h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#panda_models').load('/car_models');  
+
+        });
+    </script>
+    </div>
+
+    <div id="Panda-Fleet" class="tabcontent" >
+    <h2>Database Environment Details</h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#Panda-Fleet').load('/vechiles');  
+
+        });
+    </script>
+    </div>
+
+    </div>
+
+    <div id="Environment" class="tabcontent" >
+    <h2>Database Environment Details</h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#Environment').load('/env');  
+
+        });
+    </script>
+    </div>
+
+    <div id="Employees" class="tabcontent" >
+    <h2>Database Environment Details</h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#Employees').load('/employees');  
+
+        });
+    </script>
+    </div>
+
+    <div id="Models" class="tabcontent">
+        <h2>Our Models</h2>
+        <p>View Panda fleet info at  /vechiles <a href="/vechiles">here</a></p>
+        <p>Get your Employee info at /employees <a href="/employees">here</a></p>
+        <p>Get your model info at /car_models <a href="/car_models">here</a></p>
+        <p>View Panda Fleets locations <a href="/iot">here</a></p>
+        <!-- <ul>
+            <li><a href="model1.html">Model 1</a></li>
+            <li><a href="model2.html">Model 2</a></li>
+            <li><a href="model3.html">Model 3</a></li>
+        </ul> -->
+    </div>
+
+    <div id="About" class="tabcontent">
+        <h2>About Us</h2>
+        <p>Our company is dedicated to providing...</p>
+    </div>
+
+    <div id="Contact" class="tabcontent">
+        <h2>Contact Us</h2>
+        <p>Address: 123 Main Street, City, State, ZIP</p>
+        <p>Phone: (123) 456-7890</p>
+        <p>Email: info@yourcompany.com</p>
+    </div>
+
+
+
+
+    <!-- <div id="Environment" class="tabcontent">
+        <h2>Environment</h2>
+        <p>Environment Details...</p>
+    </div> -->
+
+
+    <img src="static/logo.png" alt="Company Logo">
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Version</title>
+</head>
+<body>
+    <h1>Database Version</h1>
+    <p>{{ version }}</p>
+    <h1>System Version</h1>
+    {% if sytem_versions %}
+        <p>Running on system version: {{ sytem_versions }}</p>
+    {% else %}
+        <p>Error: Failed to retrieve sytem_versions.</p>
+    {% endif %}
+    <h1>Library Imports </h1>
+    {% if imports %}
+        <p>Running with import : {{ imports }}</p>
+    {% else %}
+        <p>Error: Failed to retrieve imports.</p>
+    {% endif %}
+</body>
+</html>

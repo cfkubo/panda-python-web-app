@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- <meta http-equiv="refresh" content="5"> -->
+</head>
+<body>
+  <div class="container">
+    <h2>Car Models Data</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Generations</th>
+                <th>Sold_Units</th>
+                <th>In_Stock_Units</th>
+                <th>Damaged_units/th>
+                <th>manufacturer</th>
+                <th>year_first_released</th>
+                <th>body_type</th>
+                <th>engine_type</th>
+                <th>fuel_type</th>
+                <th>transmission_type</th>
+                <th>price_range</th>
+                <th>transmission_type</th>
+                <th>safety_rating</th>
+                <th>features</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in car_models %}
+            <tr>
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[3] }}</td>
+              <td>{{ row[4] }}</td>
+              <td>{{ row[5] }}</td>
+              <td>{{ row[6] }}</td>
+              <td>{{ row[7] }}</td>
+              <td>{{ row[8] }}</td>
+              <td>{{ row[9] }}</td>
+              <td>{{ row[10] }}</td>
+              <td>{{ row[11] }}</td>
+              <td>{{ row[12] }}</td>
+              <td>{{ row[13] }}</td>
+              <td>{{ row[14] }}</td>
+              <td>{{ row[15] }}</td>
+              <td>{{ row[16] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
