@@ -19,7 +19,10 @@
 docker run -d -p 1521:1521 -e ORACLE_PASSWORD=XXXXX -v oracle-volume:/opt/oracle/oradata gvenzl/oracle-xe
 ```
 
-#
+# Panda-Company-feature
+1. Provides data generator that genrates random data for various jobs
+2. Provides data loaders that can load the data to postgres db
+
 
 <p align="center">
 <img src="static/panda-arch.png" width="800" alt="Online Web Application" />
