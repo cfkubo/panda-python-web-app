@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Loader</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .file-info {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button#start {
+            background-color: #009933;
+            color: white;
+        }
+        button#stop {
+            background-color: #ff3333;
+            color: white;
+        }
+
+        /* Center the loader */
+          #loader {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          z-index: 1;
+          width: 120px;
+          height: 120px;
+          margin: -76px 0 0 -76px;
+          border: 16px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 16px solid #3498db;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+          }
+
+          @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+          }
+
+          @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+          }
+
+          /* Add animation to "page content" */
+          .animate-bottom {
+          position: relative;
+          -webkit-animation-name: animatebottom;
+          -webkit-animation-duration: 1s;
+          animation-name: animatebottom;
+          animation-duration: 1s
+          }
+
+          @-webkit-keyframes animatebottom {
+          from { bottom:-100px; opacity:0 }
+          to { bottom:0px; opacity:1 }
+          }
+
+          @keyframes animatebottom {
+          from{ bottom:-100px; opacity:0 }
+          to{ bottom:0; opacity:1 }
+          }
+
+          #myDiv {
+          display: none;
+          text-align: center;
+          }
+
+          .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+          }
+
+    </style>
+
+    </head>
+    <body>
+      <div class="container">
+        <div class="container">
+          <form action="/start_producers" method="post" onsubmit="showLoader()">
+            <h1>Single Click to Start the Gini Producers</h1>
+            <h2>To load more data. Rerun the Producers</h2>
+            <button id="start"  >Start GINI Producers</button>
+          </form>
+
+        </div>
+        <form action="/start_consumers" method="post" onsubmit="showLoader()">
+          <h1>Single Click to Start the Gini Consumers</h1>
+          <button id="start" >Start GINI Consumer</button>
+        </form>
+      </div>
+
+      <div id="loader" style="display: none;"></div>
+
+        <div></div>
+      <br><br>
+      <div>
+          <img src="static/panda-arch.png" alt="panda-arch" class="center">
+      </div>
+
+      <!-- <div class="container">
+        <form action="/stop_loading" method="post" >
+          <button id="stop" onclick="stopDataLoading()">Stop Data Loading</button>
+          <button onclick="callPythonFunction()">Call Python Function</button>
+        </form>
+      </div> -->
+
+        <script>
+          function showLoader() {
+               document.getElementById("loader").style.display = "block";
+               document.getElementById("Ask").style.display = "none";
+           }
+
+           function hideLoader() {
+               document.getElementById("loader").style.display = "none";
+               document.getElementById("Ask").style.display = "block";
+           }
+
+
+        </script>
+    </body>
+    </html>

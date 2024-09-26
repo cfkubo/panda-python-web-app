@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Moving Market</title>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = "{{ map_html | safe }}";
+        document.getElementById('map').innerHTML = map;
+    </script>
+</body>
+</html>

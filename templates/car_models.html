@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Data</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
-    <!-- <meta http-equiv="refresh" content="5"> -->
+    <title>Car Models Data</title>
+    <style>
+        .container {
+            max-width: 1000px; /* Adjust the width as needed */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto; /* Enable horizontal scrolling if needed */
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
   <div class="container">
@@ -12,21 +32,25 @@
     <table class="table table-striped">
         <thead>
             <tr>
+               <!-- id |              name               |    model    | generations | sold_units | in_stock_units | damaged_units |
+                manufacturer           | year_first_released | body_type | engine_type |
+                fuel_type | transmission_type | price_range | safety_rating |
+      features -->
+                <th>ID</th>
                 <th>Name</th>
                 <th>Model</th>
                 <th>Generations</th>
-                <th>Sold_Units</th>
-                <th>In_Stock_Units</th>
-                <th>Damaged_units/th>
-                <th>manufacturer</th>
-                <th>year_first_released</th>
-                <th>body_type</th>
-                <th>engine_type</th>
-                <th>fuel_type</th>
-                <th>transmission_type</th>
-                <th>price_range</th>
-                <th>transmission_type</th>
-                <th>safety_rating</th>
+                <th>Sold#</th>
+                <th>In_Stock#</th>
+                <th>Damaged#</th>
+                <th>Manufacturer</th>
+                <th>year</th>
+                <th>Body</th>
+                <th>engine</th>
+                <th>fuel</th>
+                <th>T-type</th>
+                <th>price</th>
+                <th>rating</th>
                 <th>features</th>
             </tr>
         </thead>
@@ -50,6 +74,7 @@
               <td>{{ row[14] }}</td>
               <td>{{ row[15] }}</td>
               <td>{{ row[16] }}</td>
+              <!-- <td>{{ row[16] }}</td> -->
             </tr>
             {% endfor %}
         </tbody>

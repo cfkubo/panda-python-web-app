@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Panda Website</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css" integrity="sha384-3fdgwJw17Bi87e1QQ4fsLn4rUFqWw//KU0g8TvV6quvahISRewev6/EocKNuJmEw" crossorigin="anonymous"> -->
     <div style="display: flex; justify-content: space-between;">
       <img src="static/pandalogo.png" alt="Company Logo" width="200" height="100">
       <h1>Welcome to Panda Company</h1>
@@ -9,6 +10,57 @@
     </div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
+    /* Center the loader */
+        #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        width: 120px;
+        height: 120px;
+        margin: -76px 0 0 -76px;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+
+        /* Add animation to "page content" */
+        .animate-bottom {
+        position: relative;
+        -webkit-animation-name: animatebottom;
+        -webkit-animation-duration: 1s;
+        animation-name: animatebottom;
+        animation-duration: 1s
+        }
+
+        @-webkit-keyframes animatebottom {
+        from { bottom:-100px; opacity:0 }
+        to { bottom:0px; opacity:1 }
+        }
+
+        @keyframes animatebottom {
+        from{ bottom:-100px; opacity:0 }
+        to{ bottom:0; opacity:1 }
+        }
+
+        #myDiv {
+        display: none;
+        text-align: center;
+        }
+
+
         /* Add your custom CSS styles here */
         .tab {
             overflow: hidden;
@@ -46,20 +98,57 @@
         }
     </style>
 </head>
-<body>
+<body onload="myFunction()" style="margin:0;">
+    <div id="loader"></div>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Models')">Models</button>
-        <button class="tablinks" onclick="openTab(event, 'About')">About</button>
-        <button class="tablinks" onclick="location.href='/iot'" >IOT</button>
-        <button class="tablinks" onclick="openTab(event, 'iot-new')" >iot-new</button>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css" integrity="sha384-3fdgwJw17Bi87e1QQ4fsLn4rUFqWw//KU0g8TvV6quvahISRewev6/EocKNuJmEw" crossorigin="anonymous">
 
-        <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
-        <button class="tablinks"  onclick="openTab(event, 'Environment')")>Environment</button>
+        <button class="tablinks" onclick="openTab(event, 'Endpoints')">Endpoints</button>
+        <button class="tablinks" onclick="openTab(event, 'iot-new')" >IOT-Tracking</button>
         <button class="tablinks"  onclick="openTab(event, 'Employees')")>Employees</button>
         <button class="tablinks"  onclick="openTab(event, 'Panda-Fleet')")>Panda Fleet</button>
-        <button class="tablinks"  onclick="openTab(event, 'panda_models')")>panda_models</button>
+        <button class="tablinks"  onclick="openTab(event, 'panda_models')")>Panda_Models</button>
         <button class="tablinks"  onclick="openTab(event, 'Fleet_Alerts')")>Fleet_Alerts</button>
+        <button class="tablinks"  onclick="openTab(event, 'Finda_Panda')")>Find_a_Panda</button>
+        <button class="tablinks"  onclick="openTab(event, 'sql_loder')")>Create_DB</button>
+        <button class="tablinks"  onclick="openTab(event, 'data_generator')")>Data_Generator</button>
+        <button class="tablinks" onclick="openTab(event, 'llama')">llama LLM</button>
+        <button class="tablinks"  onclick="openTab(event, 'Environment')")>Environment</button>
+        <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
         <!-- onclick="location.href='/env'" -->
+      </div>
+
+      <div id="llama" class="tabcontent">
+        <!-- <link rel="stylesheet" href="static/styles.css"> -->
+
+          <h1>Chat With LLM Models !!!!</h1>
+          <iframe src="/llama" width="100%" height="800" frameborder="0"></iframe>
+      </div>
+
+      <div id="sql_loder" class="tabcontent">
+          <h1>Tables Created in Postgres DB !!! Hurray !!!!</h1>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+          <script>
+            $(document).ready(function() {
+                $('#sql_loder').load('/sql_loader');  
+
+              });
+          </script>
+      </div>
+
+      </div>
+      <div id="data_generator" class="tabcontent">
+          <h1>GINI Data Generator</h1>
+          <h2>Make sure Postgres and Rabbitmq is up and running</h2>
+          <iframe src="/data_loader" width="100%" height="800" frameborder="0"></iframe>
+
+      </div>
+
+      </div>
+      <div id="Finda_Panda" class="tabcontent">
+          <h1>Find Panda Vechiles Near Me</h1>
+          <iframe src="/geo" width="100%" height="800" frameborder="0"></iframe>
+
       </div>
 
       <div id="iot-new" class="tabcontent">
@@ -95,7 +184,7 @@
 
     </div>
     <div id="panda_models" class="tabcontent" >
-    <h2>Database Environment Details</h2>
+    <h2>Panda Fleet Model Details</h2>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(document).ready(function() {
@@ -106,7 +195,7 @@
     </div>
 
     <div id="Panda-Fleet" class="tabcontent" >
-    <h2>Database Environment Details</h2>
+    <h2>Panda-Fleet Details</h2>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(document).ready(function() {
@@ -119,7 +208,7 @@
     </div>
 
     <div id="Environment" class="tabcontent" >
-    <h2>Database Environment Details</h2>
+    <h2>Environment Details</h2>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(document).ready(function() {
@@ -130,7 +219,7 @@
     </div>
 
     <div id="Employees" class="tabcontent" >
-    <h2>Database Environment Details</h2>
+    <h2>Employees Details</h2>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(document).ready(function() {
@@ -140,8 +229,8 @@
     </script>
     </div>
 
-    <div id="Models" class="tabcontent">
-        <h2>Our Models</h2>
+    <div id="Endpoints" class="tabcontent">
+        <h2>Exposed Endpoints</h2>
         <p>View Panda fleet info at  /vechiles <a href="/vechiles">here</a></p>
         <p>Get your Employee info at /employees <a href="/employees">here</a></p>
         <p>Get your model info at /car_models <a href="/car_models">here</a></p>
@@ -162,7 +251,7 @@
         <h2>Contact Us</h2>
         <p>Address: 123 Main Street, City, State, ZIP</p>
         <p>Phone: (123) 456-7890</p>
-        <p>Email: info@yourcompany.com</p>
+        <p>Email: arul.vannala@broadcom.com</p>
     </div>
 
 
@@ -174,7 +263,7 @@
     </div> -->
 
 
-    <img src="static/logo.png" alt="Company Logo">
+    <img src="static/logo.png" alt="Company Logo" style="object-fit: cover;">
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -189,6 +278,38 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        var myVar;
+
+        function myFunction() {
+          myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("myDiv").style.display = "block";
+        }
+
     </script>
+
+    <footer>
+      <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+      <p>Contact us at:
+        <ul>
+          <li>Email: arul.vannala@broadcom.com</li>
+          <li>Phone: (123) 456-7890</li>
+          <li>Address: 123 Main Street, City, State, ZIP</li>
+        </ul>
+      </p>
+    </footer>
+
+<style>
+  footer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+  }
+</style>
+
 </body>
 </html>
