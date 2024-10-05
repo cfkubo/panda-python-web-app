@@ -24,7 +24,7 @@ Option 2:
 ```
 https://github.com/oracle/python-oracledb/tree/main/samples/sample_container
 ```
-4. rename the db_config_sample.py to db_config.py and update your connection parameters to oracledb and rabbitmq
+4. rename the db_config_sample.py to db_config.py and update your connection parameters to Oracledb and RabbitMQ
 5. Run the python oracle Project on local
 ```
 python3 panda-company-ora.py
@@ -32,7 +32,8 @@ python3 panda-company-ora.py
 
 # Running the Postgres Project:
 1. Postgres running locally or k8s
-2. Run the python postgres project on local
+2. Rename the files db_config_sample.py to db_config.py and update your configuration for Postgress and RabbitMQ
+3. Run the python postgres project on local
 ```
 python3 panda-company-postgres.py
 ```
