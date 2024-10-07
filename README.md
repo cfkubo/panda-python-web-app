@@ -55,7 +55,9 @@ python3 panda-company-postgres-feature.py
 > Data loaders are equipped to read the json payload from RabbitMQ queue and save the data to PostgresDB or OracleDB
 
 ## Running the project on Tanzu Plaform For Cloud Foundry(TPCF)
-> Build a docker image using the Dockerfile-feature-TPCF
-cf push panda-company-tpcf <docker image>
-cf bind-service postgresdb panda-company-tpcf
-cf bind-service rabbitmq panda-company-tpcf
+> Currently the python buildpack does not support some of libraries used in the project. However we can build a docker image and run this application to demo a COTS application on TPCF
+
+1. Build a docker image using the Dockerfile-feature-TPCF
+2. cf push panda-company-tpcf <docker image>
+3. cf bind-service postgresdb panda-company-tpcf
+4. cf bind-service rabbitmq panda-company-tpcf
