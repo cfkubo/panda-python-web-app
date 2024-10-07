@@ -1,0 +1,94 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iot-panda-python-service
+spec:
+  selector:
+    app: iot-panda-python
+  ports:
+  - protocol: "TCP"
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP #LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iot-panda-python
+spec:
+  selector:
+    matchLabels:
+      app: iot-panda-python
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: iot-panda-python
+    spec:
+      containers:
+      - name: iot-panda-python
+        image: northamerica-northeast1-docker.pkg.dev/pa-mkillens/arul-repo/iot-postgres:v6
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: gcr-io
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: py-ingress-cert
+spec:
+  secretName: panda-postgres-secret
+  commonName: panda-postgres.arullab.com
+  dnsNames:
+  - panda-postgres.arullab.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: py-ingress-proxy
+spec:
+  virtualhost:
+    fqdn: "panda-postgres.arullab.com"
+    tls:
+      secretName: panda-postgres-secret
+  routes:
+   - conditions:
+     - prefix: ""
+     services:
+       - name: iot-panda-python-service
+         port: 8080
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: panda-postgres
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod-contour #letsencrypt-prod
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: contour
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - secretName: panda-postgres
+    hosts:
+    - panda-postgres.arullab.com
+  rules:
+  - host: panda-postgres.arullab.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: iot-panda-python-service
+            port:
+              number: 8080
