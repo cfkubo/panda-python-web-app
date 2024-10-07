@@ -1,16 +1,12 @@
 # panda-python-web-app
-
 <p align="center">
 <img src="templates/panda.png" width="800" alt="Online Web Application" />
 </p>
-
 
 # Requirements:
 1. postgres db to run the postgres project
 2. oracle db to run the oracle project
 3. Rabbitmq to run the data generator and loaders project.
-
-
 
 # Running the Oracle Project:
 1. linux vm to run oracle docker image
@@ -50,3 +46,16 @@ python3 panda-company-postgres-feature.py
 <p align="center">
 <img src="static/panda-arch.png" width="800" alt="Online Web Application" />
 </p>
+
+
+## Data generators
+> Data generator comes with various jobs that can produce random data and send a json payload to RabbitMQ queue_declare
+
+## Data loaders
+> Data loaders are equipped to read the json payload from RabbitMQ queue and save the data to PostgresDB or OracleDB
+
+## Running the project on Tanzu Plaform For Cloud Foundry(TPCF)
+> Build a docker image using the Dockerfile-feature-TPCF
+> cf push panda-company-tpcf <docker image>
+> cf bind-service postgresdb panda-company-tpcf
+> cf bind-service rabbitmq panda-company-tpcf
