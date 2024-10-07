@@ -56,6 +56,6 @@ python3 panda-company-postgres-feature.py
 
 ## Running the project on Tanzu Plaform For Cloud Foundry(TPCF)
 > Build a docker image using the Dockerfile-feature-TPCF
-> cf push panda-company-tpcf <docker image>
-> cf bind-service postgresdb panda-company-tpcf
-> cf bind-service rabbitmq panda-company-tpcf
+cf push panda-company-tpcf <docker image>
+cf bind-service postgresdb panda-company-tpcf
+cf bind-service rabbitmq panda-company-tpcf
