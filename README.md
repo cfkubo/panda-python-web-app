@@ -59,5 +59,7 @@ python3 panda-company-postgres-feature.py
 
 1. Build a docker image using the Dockerfile-feature-TPCF
 2. cf push panda-company-tpcf <docker image>
+> CF_DOCKER_PASSWORD="$(cat key.json)" cf push panda-company-feature --docker-image <DOCKERIMAGE> --docker-username _json_key -k 2G
+
 3. cf bind-service postgresdb panda-company-tpcf
 4. cf bind-service rabbitmq panda-company-tpcf
