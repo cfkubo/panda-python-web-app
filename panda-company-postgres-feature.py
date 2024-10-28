@@ -75,7 +75,7 @@ def fetch_vehicle_locations():
     """Fetches vehicle GPS locations from the database."""
     with psycopg2.connect(host=db_config.pg_host, password=db_config.pg_password, database=db_config.pg_database, user=db_config.pg_user, port=db_config.pg_port) as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT latitude, longitude FROM vehicles")
+            cur.execute("SELECT latitude, longitude, vehicle_alerts FROM vehicles")
             locations = cur.fetchall()
             logging.info(f"Fetched {len(locations)} vehicle locations")
             return locations
@@ -83,12 +83,10 @@ def fetch_vehicle_locations():
 
 def create_folium_map(locations):
     """Creates a Folium map with markers at the specified locations."""
-
     m = folium.Map(location=[55, -172], zoom_start=3)  # Adjust initial location and zoom
+    for lat, lon, vehicle_alerts in locations:
 
-    for lat, lon in locations:
-        folium.Marker([lat, lon], popup=f"Lat: {lat}, Lon: {lon}").add_to(m)
-
+        folium.Marker([lat, lon], popup=f"Lat: {lat}, Lon: {lon}, Alert: {vehicle_alerts}").add_to(m)
     return m
 
 
