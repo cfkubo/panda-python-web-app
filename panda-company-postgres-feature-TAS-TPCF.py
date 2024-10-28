@@ -115,13 +115,32 @@ def fetch_vehicle_locations():
             return locations
 
 
+# def create_folium_map(locations):
+#     """Creates a Folium map with markers at the specified locations."""
+#
+#     m = folium.Map(location=[55, -172], zoom_start=3)  # Adjust initial location and zoom
+#
+#     for lat, lon in locations:
+#         folium.Marker([lat, lon], popup=f"Lat: {lat}, Lon: {lon}, Alert: {vehicle_alerts}").add_to(m)
+#     return m
+
 def create_folium_map(locations):
-    """Creates a Folium map with markers at the specified locations."""
-
+    """Creates a Folium map with markers at the specified locations.
+    Red markers indicate locations with alerts, blue markers for no alerts."""
     m = folium.Map(location=[55, -172], zoom_start=3)  # Adjust initial location and zoom
+    for lat, lon, vehicle_alerts in locations:
 
-    for lat, lon in locations:
-        folium.Marker([lat, lon], popup=f"Lat: {lat}, Lon: {lon}, Alert: {vehicle_alerts}").add_to(m)
+        alerts_str = str(vehicle_alerts).lower()
+        marker_color = 'blue'
+
+        if '[None]' not in alerts_str and 'none' not in alerts_str:
+            marker_color = 'red'
+
+        folium.Marker(
+            location=[lat, lon],
+            popup=f"Lat: {lat}, Lon: {lon}, Alert: {vehicle_alerts}",
+            icon=folium.Icon(color=marker_color)
+        ).add_to(m)
     return m
 
 
