@@ -228,7 +228,7 @@ def start_loading_process():
     print('started')
     global subprocess  # Access the global subprocess variable
     print('hello from starting Consumers')
-    subprocess = subprocess.run(["sh", "start-producers.sh"])
+    subprocess = subprocess.run(["sh", "start-consumers.sh"])
     print('GINI Producers Applications started !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     return render_template('sql_loader.html')
     # return
@@ -237,7 +237,7 @@ def start_consumers_process():
     print('started')
     global subprocess1  # Access the global subprocess variable
     print('hello from starting Producers')
-    subprocess1 = subprocess.run(["sh", "start-consumers.sh"])
+    subprocess1 = subprocess.run(["sh", "start-producers.sh"])
     print('GINI Consumers Applications started !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     return render_template('sql_loader.html')
 
