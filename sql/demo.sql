@@ -15,6 +15,12 @@ CREATE TABLE vehicles (
     vehicle_alerts VARCHAR(255)[]
 );
 
+CREATE INDEX idx_vehicles_lat_lon
+ON vehicles (latitude, longitude);
+
+CREATE INDEX idx_vehicles_ownername
+ON vehicles (ownername);
+
 -- CREATE TABLE vehicles_new (
 --     id SERIAL PRIMARY KEY,
 --     make VARCHAR(255) NOT NULL,
