@@ -44,7 +44,7 @@ python3 panda-company-postgres-feature.py
 ```
 
 <p align="center">
-<img src="static/panda-arch.png" width="800" alt="Online Web Application" />
+<img src="static/panda_arch.png" width="800" alt="Online Web Application" />
 </p>
 
 
