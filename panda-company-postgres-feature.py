@@ -29,7 +29,7 @@ def home():
 def fetch_vehicle_data():
     with psycopg2.connect(host=db_config.pg_host, password=db_config.pg_password, database=db_config.pg_database, user=db_config.pg_user, port=db_config.pg_port) as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT * FROM vehicles")
+            cur.execute("SELECT * FROM vehicles limit 100")
             data = cur.fetchall()
             logging.info(f"Fetched {len(data)} vehicle records")
             return data
@@ -44,7 +44,7 @@ def index():
 def fetch_emp_data():
     with psycopg2.connect(host=db_config.pg_host, password=db_config.pg_password, database=db_config.pg_database, user=db_config.pg_user, port=db_config.pg_port) as conn1:
         with conn1.cursor() as curr:
-            curr.execute("SELECT * FROM employees")
+            curr.execute("SELECT * FROM employees limit 100")
             empdata = curr.fetchall()
             logging.info(f"Fetched {len(empdata)} employee records")
             return empdata
@@ -59,7 +59,7 @@ def emp():
 def fetch_car_data():
     with psycopg2.connect(host=db_config.pg_host, password=db_config.pg_password, database=db_config.pg_database, user=db_config.pg_user, port=db_config.pg_port) as conn1:
         with conn1.cursor() as curr:
-            curr.execute("SELECT * FROM car_models")
+            curr.execute("SELECT * FROM car_models limit 100")
             car_models = curr.fetchall()
             logging.info(f"Fetched {len(car_models)} car model records")
             return car_models
@@ -75,7 +75,7 @@ def fetch_vehicle_locations():
     """Fetches vehicle GPS locations from the database."""
     with psycopg2.connect(host=db_config.pg_host, password=db_config.pg_password, database=db_config.pg_database, user=db_config.pg_user, port=db_config.pg_port) as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT latitude, longitude, vehicle_alerts FROM vehicles")
+            cur.execute("SELECT latitude, longitude, vehicle_alerts FROM vehicles limit 1000")
             locations = cur.fetchall()
             logging.info(f"Fetched {len(locations)} vehicle locations")
             return locations
@@ -96,7 +96,7 @@ def create_folium_map(locations):
     for lat, lon, vehicle_alerts in locations:
 
         alerts_str = str(vehicle_alerts).lower()
-        marker_color = 'blue'  
+        marker_color = 'blue'
 
         if '[None]' not in alerts_str and 'none' not in alerts_str:
             marker_color = 'red'
