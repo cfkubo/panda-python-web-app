@@ -43,16 +43,16 @@ python3 panda-company-postgres.py
 python3 panda-company-postgres-feature.py
 ```
 
-<p align="center">
-<img src="static/panda_arch.png" width="800" alt="Online Web Application" />
-</p>
-
-
 ## Data generators
 > Data generator comes with various jobs that can produce random data and send a json payload to RabbitMQ queue_declare
 
 ## Data loaders
 > Data loaders are equipped to read the json payload from RabbitMQ queue and save the data to PostgresDB or OracleDB
+
+<p align="center">
+<img src="static/panda_arch.png" width="800" alt="Online Web Application" />
+</p>
+
 
 ## Running the project on Tanzu Plaform For Cloud Foundry(TPCF)
 > Currently the python buildpack does not support some of libraries used in the project. However we can build a docker image and run this application to demo a COTS application on TPCF
