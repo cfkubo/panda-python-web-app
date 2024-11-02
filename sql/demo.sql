@@ -16,7 +16,7 @@ CREATE TABLE vehicles (
 );
 
 CREATE INDEX idx_vehicles_lat_lon
-ON vehicles (latitude, longitude);
+ON vehicles (latitude, longitude, vehicle_alerts);
 
 CREATE INDEX idx_vehicles_ownername
 ON vehicles (ownername);
