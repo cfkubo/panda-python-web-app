@@ -62,7 +62,7 @@ def home():
 def fetch_vehicle_data():
     with psycopg2.connect(**pg_config) as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT * FROM vehicles")
+            cur.execute("SELECT * FROM vehicles limit 1000")
             data = cur.fetchall()
             logging.info(f"Fetched {len(data)} vehicle records")
             return data
@@ -77,7 +77,7 @@ def index():
 def fetch_emp_data():
     with psycopg2.connect(**pg_config) as conn1:
         with conn1.cursor() as curr:
-            curr.execute("SELECT * FROM employees")
+            curr.execute("SELECT * FROM employees limit 100")
             empdata = curr.fetchall()
             logging.info(f"Fetched {len(empdata)} employee records")
             return empdata
@@ -92,7 +92,7 @@ def emp():
 def fetch_car_data():
     with psycopg2.connect(**pg_config) as conn1:
         with conn1.cursor() as curr:
-            curr.execute("SELECT * FROM car_models")
+            curr.execute("SELECT * FROM car_models limit 100")
             car_models = curr.fetchall()
             logging.info(f"Fetched {len(car_models)} car model records")
             return car_models
