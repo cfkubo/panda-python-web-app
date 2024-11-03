@@ -51,14 +51,14 @@ channel.queue_declare(queue=rabbitmq_queue,durable=True,arguments={"x-queue-type
 # channel.queue_declare(queue='vehicle_data')
 
 # Main loop to generate and send car data
-for _ in range(1000):
+for _ in range(10000):
     car_data = generate_random_car()
     channel.basic_publish(exchange='',
                          routing_key=rabbitmq_queue,
                          body=json.dumps(car_data))
     print("Sent:", json.dumps(car_data))
 
-    time.sleep(1)  # Simulate sensor readings every minute
+    # time.sleep(1)  # Simulate sensor readings every minute
 
 # Close the connection
 connection.close()
