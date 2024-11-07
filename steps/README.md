@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install docker.io
 docker --version
 whoami
-sudo usermod -aG docker avannala
+sudo usermod -aG docker USER
 docker --version
 docker ps
 ```
@@ -22,3 +22,7 @@ cp ~/.kube/config ~/.kube/config.bak && KUBECONFIG=~/.kube/config:/Users/avannal
 ```
 
 ####
+
+```
+CREATE ROLE admin WITH LOGIN SUPERUSER PASSWORD 'password';
+```
