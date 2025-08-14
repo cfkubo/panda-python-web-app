@@ -60,7 +60,7 @@ python3 panda-company-postgres-feature.py
 </p>
 
 
-## Running the project on Tanzu Plaform For Cloud Foundry(TPCF)
+## Running the project on Tanzu Plaform For Cloud Foundry(TP)
 > Currently the python buildpack does not support some of libraries used in the project. However we can build a docker image and run this application to demo a COTS application on TPCF
 
 1. Build a docker image using the Dockerfile-feature-TPCF
