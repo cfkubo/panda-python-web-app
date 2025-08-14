@@ -23,6 +23,8 @@ https://github.com/oracle/python-oracledb/tree/main/samples/sample_container
 4. rename the db_config_sample.py to db_config.py and update your connection parameters to Oracledb and RabbitMQ
 5. Run the python oracle Project on local
 ```
+python -m venv venv
+source venv/bin/activate
 python3 panda-company-ora.py
 ```
 
@@ -31,6 +33,8 @@ python3 panda-company-ora.py
 2. Rename the files db_config_sample.py to db_config.py and update your configuration for Postgress and RabbitMQ
 3. Run the python postgres project on local
 ```
+python -m venv venv
+source venv/bin/activate
 python3 panda-company-postgres.py
 ```
 
@@ -40,6 +44,8 @@ python3 panda-company-postgres.py
 3. Update the config values for Postgres, RabbitMQ and OLLAMA
 4. Run the python postgres freature project on local
 ```
+python -m venv venv
+source venv/bin/activate
 python3 panda-company-postgres-feature.py
 ```
 
