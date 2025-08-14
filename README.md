@@ -69,11 +69,12 @@ python3 panda-company-postgres-feature.py
 ```
 CF_DOCKER_PASSWORD="$(cat key.json)" cf push panda-company-feature --docker-image <DOCKERIMAGE> --docker-username _json_key -k 2G
 ```
+3. Bind your postgres db to app
 
 ```
 cf bind-service postgresdb panda-company-tpcf
 ```
-
+4. bind your rabbitmq service to app
 ```
 cf bind-service rabbitmq panda-company-tpcf
 ```
